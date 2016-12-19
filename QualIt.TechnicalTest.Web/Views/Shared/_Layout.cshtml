@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/styles/master.css" rel="stylesheet" />
+    <link href="~/Content/styles/home.css" rel="stylesheet" />
+    <link href="~/Content/styles/authors.css" rel="stylesheet" />
+    <link href="~/Content/styles/book.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body ng-app="LibraryApp">
+    
+    <header class="header">
+        <div class="header-title">
+            <span class="first">PUBLIC</span>
+            <span class="second">LIBRARY</span>
+        </div>
+        <nav class="header-menu">
+            <ul class="menu">
+                <li class="item">
+                    <a href="/">HOME</a>
+                    <a>ABOUT</a>
+                    <a>VIDEOS</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    @RenderBody()
+
+    <div ng-view></div>
+
+    <!--Angular's modules-->
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-route.min.js"></script>
+
+    <!-- Javascript's Modules -->
+    <script src="~/App/app.js"></script>
+    <script src="~/App/Book/book.controller.js"></script>
+    <script src="~/App/Book/book.service.js"></script>
+    <script src="~/App/Author/author.controller.js"></script>
+    <script src="~/App/Author/author.service.js"></script>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

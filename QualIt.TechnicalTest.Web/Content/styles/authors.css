@@ -1,0 +1,19 @@
+﻿.authors {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5em;
+}
+
+.authors table {
+    width: 70%;
+}
+
+.authors table tbody .delete_author a i{
+    color: red;
+}
+
+button {
+    margin-top: 2em;
+    width: 20%;
+}

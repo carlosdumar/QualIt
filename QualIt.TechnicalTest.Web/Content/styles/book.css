@@ -1,0 +1,39 @@
+﻿.book {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.book h3 {
+    margin-top: 1em;
+}
+
+.book-item {
+    background: white;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 1em 0;
+    width: 50vh;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+        
+}
+
+.book-item .close a {
+    margin-left: 2em;
+    color: red;
+}
+.book-item-description {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1em;
+}
+.book-item-description .title {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.book-item-description .description {
+    margin: 1em 0;
+}

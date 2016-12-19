@@ -1,0 +1,35 @@
+﻿.library {
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.library-background {
+    background-image: url('../../Images/mantle-sample.png');
+    height: 50vh;
+    background-repeat: round;
+    width: 100%;
+}
+
+.library-background h2 {
+    font-weight: 600;
+    font-size: 3em;
+    color: white;
+    float: right;
+    margin: 4em 4em 0 0;
+}
+.library-menu, .menu {
+    list-style: none;
+}
+
+c, .menu, li {
+    text-decoration: none;
+}
+
+.library-menu, .menu, .menu-item a i{
+    margin-right: .5em;
+}
+
+.library-menu .menu .menu-item {
+    margin-bottom: 1em;
+}

@@ -1,0 +1,35 @@
+﻿
+body {
+    margin: 0;
+    padding: 0;
+    background: lightgray;
+    font-family: 'Open Sans', sans-serif;
+}
+header {
+    background: #323a45;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em 0;
+}
+
+.header-title .first {
+	color: #fff;
+}
+
+.header-title .second {
+    color: #45b39e;
+}
+.header .header-menu {
+    display: inline-block;
+}
+
+.header .header-title {
+    display: inline-block;
+    font-size: 2em;
+}
+.header .header-menu .menu li a {
+    margin-right: 2em;
+    color: white;
+}

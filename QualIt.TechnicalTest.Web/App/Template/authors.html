@@ -1,0 +1,52 @@
+﻿<div class="authors">
+    <table class="table table-bordered table-responsive table-striped">
+        <thead>
+            <tr>
+                <td></td>
+                <td>Id</td>
+                <td>Name</td>
+                <td>Nationality</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="author in authors">
+                <td class="delete_author">
+                    <a ng-click="deleteAuthor(author)">
+                        <i class="fa fa-times-circle" aria-hidden="true"></i>
+                    </a>    
+                </td>
+                <td ng-bind="author.id" ng-model="author.id"></td>
+                <td ng-bind="author.name" ng-model="author.name"></td>
+                <td ng-bind="author.nationality" ng-model="author.nationality"></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+        Add new author 
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">New Author</h4>
+                </div>
+                <div class="modal-body"> 
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="name" ng-model="author.name" required/>
+                    </div> 
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="nationality" ng-model="author.nationality" required/>
+                    </div>                  
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" ng-click="saveAuthor(author)">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
