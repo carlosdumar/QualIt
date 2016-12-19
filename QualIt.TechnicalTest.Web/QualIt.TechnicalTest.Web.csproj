@@ -131,6 +131,7 @@
     <Content Include="Content\normalize.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\styles\authors.css" />
+    <Content Include="Content\styles\book.css" />
     <Content Include="Content\styles\home.css" />
     <Content Include="Content\styles\master.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
