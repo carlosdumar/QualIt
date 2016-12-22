@@ -18,7 +18,7 @@
 
         
         function getAuthors() {
-            return $http.get('http://54.186.35.55:3004/authors')
+            return $http.get('http://54.186.35.55:3004/authors.json')
                 .then(getAuthorsComplete);
 
             function getAuthorsComplete(response) {
@@ -93,10 +93,10 @@
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             })
             .success(updateAuthorComplete)
-            .error(updateAuthorFailed);
+            .catch(updateAuthorFailed);
 
-            function updateAuthorComplete(data, status) {
-                if (status === 200) {
+            function updateAuthorComplete(data) {
+                if (data.status === 200) {
                     defered.resolve(data);
                 } else {
                     defered.reject();
@@ -119,11 +119,11 @@
                 url: 'http://54.186.35.55:3004/authors/' + author.author.id,
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             })
-            .then(deleteAuthorComplete)
-            .error(updateAuthorFailed);
+            .success(deleteAuthorComplete)
+            .catch(updateAuthorFailed);
 
             function deleteAuthorComplete(data, status) {
-                if (status === 200) {
+                if (data.status === 200) {
                     defered.resolve(data);
                 } else {
                     defered.reject();

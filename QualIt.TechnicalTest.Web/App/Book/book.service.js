@@ -16,15 +16,20 @@
             deleteBook: deleteBook
         };
 
-
+        /**
+        * Obtiene todos los libros de la libreria 
+        */
         function getBooks() {
-            return $http.get('http://54.186.35.55:3004/books')
+            return $http.get('http://54.186.35.55:3004/books.json')
                 .then(getBooksComplete);
 
             function getBooksComplete(response) {
                 return response.data;
             }
         }
+        /**
+        * Obtiene todos los libros de la libreria por id del Author
+        */
         function getBookById(idAuthor) {
 
             var defered = $q.defered;
@@ -64,18 +69,21 @@
                 data: $.param(book),
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             })
-            .then(function saveBookComplete(data, status) {
-                if (status === 200) {
+            .success(saveBookComplete)
+            .catch(saveBookFailed);
+
+            function saveBookComplete(data) {
+                if (data.status === 201) {
                     defered.resolve(data);
                 } else {
                     defered.reject();
                 }
-            }, function saveBookFailed(e, status) {
+            }
+            function saveBookFailed(data) {
                 var newMessage = "The request failed with reponse" + e + "and status code: " + status;
 
                 return $q.reject(newMessage);
-
-            });
+            }
 
             return defered.promise;
         }
@@ -90,10 +98,10 @@
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             })
             .success(updateBookComplete)
-            .error(updateBookFailed);
+            .catch(updateBookFailed);
 
-            function updateBookComplete(data, status) {
-                if (status === 200) {
+            function updateBookComplete(data) {
+                if (data.status === 200) {
                     defered.resolve(data);
                 } else {
                     defered.reject();
@@ -113,15 +121,15 @@
 
             $http({
                 method: 'DELETE',
-                url: 'http://54.186.35.55:3004/authors/' + book.book.id,
-                data: $.param(author),
+                url: 'http://54.186.35.55:3004/books/' + book.book.id,
+                data: $.param(book),
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             })
-            .then(deleteBookComplete)
-            .error(deleteBookFailed);
+            .success(deleteBookComplete)
+            .catch(deleteBookFailed);
 
-            function deleteBookComplete(data, status) {
-                if (status === 200) {
+            function deleteBookComplete(data) {
+                if (data.status === 200) {
                     defered.resolve(data);
                 } else {
                     defered.reject();

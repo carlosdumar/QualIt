@@ -27,60 +27,62 @@
         }
         $scope.saveBook = function (book) {
             var created = new Date();
+
             var id = parseInt(Math.random() * (100 - 1) + 100);
 
             $scope.book = {
-                'author': {
-                    'id': id,
-                    'name': book.name,
-                    'nationality': book.nationality,
-                    'created': created
+                'book': {
+                    'title': book.title,
+                    'description': book.description,
+                    'image': book.image,
+                    'created_at': created
                 }
             };
 
             bookFactory.saveBook($scope.book)
                 .then(function (data) {
-                    alert("The author was added!!");
+                    alert("The book was added!!");
                 })
                 .catch(function (data) {
                     $scope.errorSave = data;
-                    alert('The author couldnt save!!');
+                    alert('The book couldnt save!!');
                 })
         }
 
-        $scope.updateBook = function (author) {
+        $scope.updateBook = function (book) {
             var updated = new Date();
 
             $scope.book = {
-                'author': {
-                    'name': book.name,
-                    'nationality': book.nationality,
-                    'updated': updated
+                'book': {
+                    'title': book.title,
+                    'description': book.description,
+                    'image': book.image,
+                    'updated_at': updated
                 }
             }
             bookFactory.updateAuthor($scope.book)
                 .then(function (data) {
-                    alert("The author was updated!!");
+                    alert("The book was updated!!");
                 })
                 .catch(function (data) {
                     $scope.errorUpdate = data;
-                    alert('The author couldnt updated!!');
+                    alert('The book couldnt updated!!');
                 })
         }
 
         $scope.deleteBook = function (book) {
             $scope.book = {
-                'author': {
+                'book': {
                     'id': book.id
                 }
             }
             bookFactory.deleteBook($scope.book)
                 .then(function (data) {
-                    alert('The author was deleted!!')
+                    alert('The book was deleted!!')
                 })
                 .catch(function (data) {
                     $scope.errorDelete = data;
-                    alert('The author couldnt deleted!!');
+                    alert('The book couldnt deleted!!');
                 })
         }
     }
