@@ -1,4 +1,5 @@
 ﻿(function () {
+    'use strict';
 
     angular
         .module('author.services', [])
@@ -61,20 +62,23 @@
                 method: 'POST',
                 url: 'http://54.186.35.55:3004/authors',
                 data: $.param(author),
-                header: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             })
-            .then(function saveAuthorComplete(data, status) {
-                if (status === 200) {
+            .success(saveAuthorComplete)
+            .catch(saveAuthorFailed);
+
+            function saveAuthorComplete(data) {
+                if (data.status === 201) {
                     defered.resolve(data);
                 } else {
                     defered.reject();
                 }
-            }, function saveAuthorFailed(e, status) {
+            }
+            function saveAuthorFailed(data) {
                 var newMessage = "The request failed with reponse" + e + "and status code: " + status;
 
                 return $q.reject(newMessage);
-
-            });
+            }
             
             return defered.promise;
         }
@@ -86,7 +90,7 @@
                 method: 'PUT',
                 url: 'http://54.186.35.55:3004/authors',
                 data: $.param(author),
-                header: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             })
             .success(updateAuthorComplete)
             .error(updateAuthorFailed);
@@ -113,13 +117,12 @@
             $http({
                 method: 'DELETE',
                 url: 'http://54.186.35.55:3004/authors/' + author.author.id,
-                data: $.param(author),
-                header: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             })
-            .then(updateAuthorComplete)
+            .then(deleteAuthorComplete)
             .error(updateAuthorFailed);
 
-            function updateAuthorComplete(data, status) {
+            function deleteAuthorComplete(data, status) {
                 if (status === 200) {
                     defered.resolve(data);
                 } else {

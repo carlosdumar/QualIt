@@ -27,14 +27,16 @@
         }
         $scope.saveAuthor = function(author) {
             var created = new Date();
+            var updated = new Date();
+
             var id = parseInt(Math.random() * (100 - 1) + 100);
 
             $scope.author = {
                 'author': {
-                    'id': id,
                     'name': author.name,
                     'nationality': author.nationality,
-                    'created': created
+                    'created_at': created,
+                    'updated_at': updated
                 }             
             };
 

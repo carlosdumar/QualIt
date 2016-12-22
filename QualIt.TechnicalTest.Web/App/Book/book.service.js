@@ -1,4 +1,5 @@
 ﻿(function () {
+    'use strict';
 
     angular
         .module('book.services', [])
@@ -61,7 +62,7 @@
                 method: 'POST',
                 url: 'http://54.186.35.55:3004/books',
                 data: $.param(book),
-                header: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             })
             .then(function saveBookComplete(data, status) {
                 if (status === 200) {
@@ -86,7 +87,7 @@
                 method: 'PUT',
                 url: 'http://54.186.35.55:3004/books',
                 data: $.param(book),
-                header: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             })
             .success(updateBookComplete)
             .error(updateBookFailed);
@@ -114,7 +115,7 @@
                 method: 'DELETE',
                 url: 'http://54.186.35.55:3004/authors/' + book.book.id,
                 data: $.param(author),
-                header: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             })
             .then(deleteBookComplete)
             .error(deleteBookFailed);
